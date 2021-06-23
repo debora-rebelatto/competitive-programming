@@ -1,42 +1,47 @@
 import sys
 
-testCases = int(input())
+def doTheThing( highest, lowest, count ):
+  lengthStones = len(stones) - 1
+  lastNumber = stones[lengthStones]
+  firstNumber = stones[0]
 
-for _ in range(testCases):
-  numberStones = int(input())
+  if lastNumber == highest or lastNumber == lowest:
+    stones.pop()
+  elif firstNumber == highest or firstNumber == lowest:
+    stones.pop(0)
+  else:
+    stones.pop()
 
-  stones = [int(x) for x in sys.stdin.readline().split(' ')]
+  print(stones)
 
-  lowest = min(stones)
-  highest = max(stones)
+if __name__ == '__main__':
+  # testCases = int(input())
+  testCases = 1
 
-  print(lowest)
-  print(highest)
+  for _ in range(testCases):
+    # numberStones = int(input())
+    # stones = [int(x) for x in sys.stdin.readline().split(' ')]
 
-  count = 0
+    stones = [2, 3, 1, 4]
+    stones = [4, 2, 3, 1, 8, 6, 7, 5]
 
-  for stone in range(0, numberStones):
-    count += 1
-
-    if highest and lowest not in stones:
-      break
-
-    lengthStones = len(stones)
-
-    lastNumber = stones[lengthStones - 1]
-
-    firstNumber = stones[0]
-
-    print(lastNumber)
-    print(firstNumber)
-
-    if firstNumber < lastNumber:
-      stones.pop(0)
-    # elif
-    #   stones.pop(len(stones))
+    lowest = min(stones)
+    highest = max(stones)
 
 
-    print(stones)
+    indexlow = stones.index(min(stones))
+    indexhigh = stones.index(max(stones))
 
-  print("COUNT:", count)
+    print(lowest)
+    print(highest)
 
+    print(indexlow)
+    print(indexhigh)
+
+    count = 0
+
+    while (highest in stones) or (lowest in stones):
+      doTheThing(highest, lowest, count)
+      count += 1
+
+    print(count)
