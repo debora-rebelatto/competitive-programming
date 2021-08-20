@@ -13,7 +13,7 @@ def com(a, b):
         dp[i][j] = 0
     return res
 
-t  =int(input())
+t = int(input())
 for _ in range(t):
   a = input()
   b = input()

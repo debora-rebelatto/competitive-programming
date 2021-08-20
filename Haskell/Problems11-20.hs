@@ -14,7 +14,7 @@ data EncodingList a = Single a | Multiple Int a deriving (Show)
 encodeModified :: Eq a => [a] -> [EncodingList a]
 encodeModified = map encodeHelper . encode 
   where
-    encodeHelper (1,x) = Single x 
+    encodeHelper (1,x) = Single x
     encodeHelper (n,x) = Multiple n x
 
 -- Problen 12
@@ -39,7 +39,7 @@ decodeModified = concatMap decodeHelper
 -- Problem 14
 -- Duplicate the elements of a list.
 dupli :: [a] -> [a]
-dupli = concatMap (replicate 2) 
+dupli = concatMap (replicate 2)
 
 -- Problem 15
 -- Replicate the elements of a list a given number of times.
@@ -62,7 +62,7 @@ dropEvery xs n = map fst $ filter ((n/=) . snd) $ zip xs [1..]
 -- of the original list (both limits included).
 -- Start counting the elements with 1.
 slice :: [a] -> Int -> Int -> [a]
-slice xs n n' = take (n'-n+1) $ drop (n-1) xs 
+slice xs n n' = take (n'-n+1) $ drop (n-1) xs
 
 -- Problem 19
 -- Rotate a list N places to the left.
